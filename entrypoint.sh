@@ -40,7 +40,7 @@ if [[ -n "$INPUT_WORKING_DIRECTORY" ]]; then
   cd "$INPUT_WORKING_DIRECTORY"
 fi
 
-# Fix for the unsafe repo error: https://github.com/repo-sync/pull-request/issues/84
+# Fix for the unsafe repo error: https://github.com/offensive-vk/auto-pull-request/issues/84
 git config --global --add safe.directory $(pwd)
 
 ##############################

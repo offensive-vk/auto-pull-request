@@ -1,4 +1,4 @@
-# GitHub Pull Request
+# GitHub Auto Pull Request
 
 This Action was created before GitHub CLI was an option. We believe there are now better options for creating pull requests using GitHub Actions.
 
