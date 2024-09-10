@@ -1,9 +1,9 @@
-name: Auto Pull Request
+name: Auto Pull Request Action
 author: Vedansh <superuser.ntsystems@outlook.com>
 description: Create a pull request in a repository automatically
 branding:
   icon: 'git-pull-request'
-  color: 'gray-dark'
+  color: 'green'
 inputs:
   destination_repository:
     description: Repository (user/repo) to create the pull request in, falls back to checkout repository or triggered repository
