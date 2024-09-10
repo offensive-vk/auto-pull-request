@@ -1,4 +1,4 @@
-# GitHub Auto Pull Request
+# Auto Pull Request
 
 This Action was created before GitHub CLI was an option. We believe there are now better options for creating pull requests using GitHub Actions.
 
@@ -18,7 +18,22 @@ permissions:
   pull-requests: write
 
 jobs:
-  pull-request:
+  auto-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create PR
+        uses: offensive-vk/auto-pull-request@master
+        with:
+          github_token: ${{ secrets.BOT_TOKEN }}
+          destination_branch: "master"
+          pr_title: "${{ github.workflow }} - (${{ github.event.head_commit.message }})"
+          pr_body: "Hamster is working really hard here."
+          pr_reviewer: "offensive-vk"
+          pr_label: "bot,automated,hamster,pull-request"
+          pr_assignee: "TheHamsterBot"
+          pr_draft: false
+
+  gh-pull-request:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

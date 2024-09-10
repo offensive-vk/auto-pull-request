@@ -104,7 +104,7 @@ git --no-pager branch -a -vv
 echo "::endgroup::"
 
 #########################################################
-echo "::group::Ensure pull-request contains differences"
+echo "::group::Ensure pull-request Contains differences"
 
 if [ "$(git rev-parse --revs-only "$SOURCE_BRANCH")" = "$(git rev-parse --revs-only "$DESTINATION_BRANCH")" ]; then
   echo_info "Source and destination branches are the same."
@@ -122,7 +122,6 @@ echo "::endgroup::"
 
 #############################################
 echo "::group::Assemble hub pr parameters"
-# Workaround for `hub` auth error https://github.com/github/hub/issues/2149#issuecomment-513214342
 export GITHUB_USER="$GITHUB_ACTOR"
 
 PR_ARG=(-b "$DESTINATION_BRANCH" -h "$SOURCE_BRANCH" --no-edit)
