@@ -1,6 +1,6 @@
-name: GitHub Pull Request Action
+name: Auto Pull Request
 author: Vedansh <superuser.ntsystems@outlook.com>
-description: Create a pull request in a repository
+description: Create a pull request in a repository automatically
 branding:
   icon: 'git-pull-request'
   color: 'gray-dark'
