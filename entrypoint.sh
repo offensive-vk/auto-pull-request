@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
+#################################
+# Me 2024. All Rights Reserved
+#################################
 set -e
 set -o pipefail
 
-###################
 # Helper Functions
 reset_color="\\e[0m"
 color_red="\\e[31m"
@@ -50,7 +52,7 @@ if [[ -z "$GITHUB_TOKEN" ]]; then
   if [[ ! -z "$INPUT_GITHUB_TOKEN" ]]; then
     GITHUB_TOKEN="$INPUT_GITHUB_TOKEN"
     echo "::add-mask::$INPUT_GITHUB_TOKEN"
-    echo_info "INPUT_GITHUB_TOKEN=$INPUT_GITHUB_TOKEN"
+    echo_info "INPUT_GITHUB-TOKEN=$INPUT_GITHUB_TOKEN"
   else
     echo_fail "Set the GITHUB_TOKEN environment variable."
     exit 1
