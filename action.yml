@@ -1,4 +1,4 @@
-name: Auto Pull Request Action
+name: Auto Pull Request
 author: Vedansh <superuser.ntsystems@outlook.com>
 description: Create a pull request in a repository automatically
 branding:
