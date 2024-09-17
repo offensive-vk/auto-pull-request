@@ -21,7 +21,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN || secrets.BOT_TOKEN }}
           destination_branch: master
           source_branch: ${{ github.head_ref }}
-          pr_title: "Automated: Pull Request from ${{ github.head_ref }}"
+          pr_title: "Automated: Pull Request from Branch"
           pr_body: |
             # Test Action - Pull Request Test
             
@@ -31,6 +31,7 @@ jobs:
           pr_assignee: "TheHamsterBot"
           pr_milestone: ""
           pr_draft: false
+          pr_reviewer: offensive-vk
           pr_allow_empty: true
           working_directory: "."
       
