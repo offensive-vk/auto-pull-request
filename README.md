@@ -1,4 +1,4 @@
-# Auto Pull Request
+# Auto Pull Request Action
 
 This Action was created before GitHub CLI was an option. We believe there are now better options for creating pull requests using GitHub Actions.
 
@@ -53,7 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create PR
-        uses: offensive-vk/auto-pull-request@v5
+        uses: offensive-vk/auto-pr-action@v5
         with:
           github_token: ${{ secrets.BOT_TOKEN }}
           destination_branch: "master"
