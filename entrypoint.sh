@@ -1,18 +1,20 @@
 #!/usr/bin/env bash
 
 #################################
-# Me 2024. All Rights Reserved
+####### BEGIN MAIN SCRIPT #######
+# Me 2024. All Rights Reserved ##
 #################################
 set -e
 set -o pipefail
 
 # Helper Functions
-reset_color="\\e[0m"
-color_red="\\e[31m"
-color_green="\\e[32m"
-color_yellow="\\e[33m"
-color_blue="\\e[36m"
-color_gray="\\e[37m"
+reset_color="\e[0m"
+color_red="\e[31m"
+color_green="\e[32m"
+color_yellow="\e[33m"
+color_blue="\e[36m"
+color_gray="\e[37m"
+
 echo_blue() { printf "%b\n" "${color_blue}$(printf "%s\n" "$*")${reset_color}"; }
 echo_green() { printf "%b\n" "${color_green}$(printf "%s\n" "$*")${reset_color}"; }
 echo_red() { printf "%b\n" "${color_red}$(printf "%s\n" "$*")${reset_color}"; }
@@ -24,12 +26,14 @@ echo_error() { printf "%b\n" "${color_red}✖ $(printf "%s\n" "$*")${reset_color
 echo_warning() { printf "%b\n" "${color_yellow}✔ $(printf "%s\n" "$*")${reset_color}"; }
 echo_success() { printf "%b\n" "${color_green}✔ $(printf "%s\n" "$*")${reset_color}"; }
 echo_fail() { printf "%b\n" "${color_red}✖ $(printf "%s\n" "$*")${reset_color}"; }
+
 enable_debug() {
   if [[ "${INPUT_DEBUG}" == "true" ]]; then
     echo_info "Enabling debug mode."
     set -x
   fi
 }
+
 disable_debug() {
   if [[ "${INPUT_DEBUG}" == "true" ]]; then
     set +x
@@ -52,7 +56,7 @@ if [[ -z "$GITHUB_TOKEN" ]]; then
   if [[ ! -z "$INPUT_GITHUB_TOKEN" ]]; then
     GITHUB_TOKEN="$INPUT_GITHUB_TOKEN"
     echo "::add-mask::$INPUT_GITHUB_TOKEN"
-    echo_info "INPUT_GITHUB-TOKEN=$INPUT_GITHUB_TOKEN"
+    echo_info "INPUT_GITHUB_TOKEN=$INPUT_GITHUB_TOKEN"
   else
     echo_fail "Set the GITHUB_TOKEN environment variable."
     exit 1
@@ -126,7 +130,7 @@ echo "::endgroup::"
 echo "::group::Assemble hub pr parameters"
 export GITHUB_USER="$GITHUB_ACTOR"
 
-PR_ARG=( -b "$DESTINATION_BRANCH" -h "$SOURCE_BRANCH" --no-edit)
+PR_ARG=(-b "$DESTINATION_BRANCH" -h "$SOURCE_BRANCH" --no-edit)
 
 if [[ ! -z "$INPUT_PR_TITLE" ]]; then
   PR_ARG+=(-m "$INPUT_PR_TITLE")
@@ -148,7 +152,7 @@ fi
 
 if [[ ! -z "$INPUT_PR_LABEL" ]]; then
   PR_ARG+=(-l "$INPUT_PR_LABEL")
-fi
+ fi
 
 if [[ ! -z "$INPUT_PR_MILESTONE" ]]; then
   PR_ARG+=(-M "$INPUT_PR_MILESTONE")
@@ -230,3 +234,6 @@ fi
 cat $GITHUB_OUTPUT
 
 echo "::endgroup::"
+#########################
+##### END OF SCRIPT #####
+#########################
