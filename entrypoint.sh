@@ -126,7 +126,7 @@ echo "::endgroup::"
 echo "::group::Assemble hub pr parameters"
 export GITHUB_USER="$GITHUB_ACTOR"
 
-PR_ARG=(-b "$DESTINATION_BRANCH" -h "$SOURCE_BRANCH" --no-edit)
+PR_ARG=( -b "$DESTINATION_BRANCH" -h "$SOURCE_BRANCH" --no-edit)
 
 if [[ ! -z "$INPUT_PR_TITLE" ]]; then
   PR_ARG+=(-m "$INPUT_PR_TITLE")
