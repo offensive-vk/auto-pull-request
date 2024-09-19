@@ -1,0 +1,41 @@
+name: Automated Pull Request
+
+on:
+  push:
+    branches:
+      - "**"
+
+jobs:
+  create_pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install @actions/github
+
+      - name: Create Pull Request via Node.js
+        run: |
+          node << EOF
+          const github = require('@actions/github');
+          const token = process.env.GITHUB_TOKEN;
+          const octokit = github.getOctokit(token);
+
+          const [owner, repo] = process.env.GITHUB_REPOSITORY.split('/');
+
+          octokit.rest.pulls.create({
+            owner,
+            repo,
+            title: "Automated PR from ${process.env.GITHUB_HEAD_REF}",
+            head: process.env.GITHUB_HEAD_REF,
+            base: "main",
+            body: "This is an automated pull request created by the GitHub Actions workflow."
+          });
+          EOF
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
