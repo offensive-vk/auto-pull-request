@@ -1,6 +1,8 @@
 # Auto Pull Request Action
 
-This Action was created before GitHub CLI was an option. We believe there are now better options for creating pull requests using GitHub Actions.
+This Action Enables you to automatically create or update pr based on the changes on various changes in your repository. Uses `GITHUB_TOKEN` as its default token.
+
+However, This Action was created before GitHub CLI was an option. We believe there are now better options for creating pull requests using GitHub Actions.
 
 We recommend using GitHub CLI directly in your workflow file. See: [`gh pr create`](https://cli.github.com/manual/gh_pr_create)
 
