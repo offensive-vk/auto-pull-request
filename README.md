@@ -53,7 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create PR
-        uses: offensive-vk/auto-pr-action@v5
+        uses: offensive-vk/auto-pull-request@v6
         with:
           github_token: ${{ secrets.BOT_TOKEN }}
           destination_branch: "master"

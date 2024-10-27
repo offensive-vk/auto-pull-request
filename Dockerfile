@@ -3,7 +3,7 @@ FROM alpine
 RUN echo https://dl-cdn.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories && \
   apk add --no-cache git hub bash
 
-COPY --chown=1000:1000 --chmod=+x *.sh /
+COPY --chown=1000:1000 --chmod=755 *.sh /
 
 ENTRYPOINT ["sh", "./entrypoint.sh"]
 
